@@ -20,8 +20,7 @@ captured on a wireless (802.11) interface to a file.
 Commands for usage:
 cd <directory where the stuff is downloaded>
 make
-./sniffer <monitor interface> <output txt file>
-text2pcap -l 127 <output txt file> <output pcap file>
+./sniffer <monitor interface> <output pcap file>
 wireshark <output pcap file>
 
 To clean the files run "make clean"

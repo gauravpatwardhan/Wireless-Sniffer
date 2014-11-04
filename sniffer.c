@@ -16,6 +16,8 @@
 
 */
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <pcap/pcap.h>
 
 FILE* fp;
@@ -38,11 +40,6 @@ void print_usage(){
 	printf("\n2. You must have pcap library and wireshark installed.");
 	printf("\n3. This binary only runs on linux.");
 	printf("\n4. The driver creates the radiotap header.");
-	printf("\n");
-	printf("\nSteps:");
-	printf("\n1. Run this program.");
-	printf("\n2. You will get a output.txt file in the same folder.");
-	printf("\n3. Run the following command to get a wireless trace => text2pcap -l 127 output.txt output.pcap");
 	printf("\n");
 }
 
@@ -99,5 +96,12 @@ int main(int argc, char *argv[]) {
 	pcap_loop(handle, -1, print_contents, NULL);
 	fclose(fp);
 	pcap_close(handle);
+	
+	char * command = "text2pcap -l 127 ";
+	char * location = argv[2];
+	char * output_file="output.pcap";
+	char * system_command_1= strcat(command,strcat(location,output_file));
+	system(system_command_1);
+	system(strcat("rm -f ",argv[2]));
 	return(0);
 }

@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Werror
 DEPS = pcap.h, stdio.h
 
-sniffer: sniffer2.c
+sniffer: sniffer.c
 	$(CC) $(CFLAGS) sniffer.c -o sniffer -lpcap
 
 clean:
