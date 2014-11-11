@@ -97,11 +97,7 @@ int main(int argc, char *argv[]) {
 	fclose(fp);
 	pcap_close(handle);
 	
-	char * command = "text2pcap -l 127 ";
-	char * location = argv[2];
-	char * output_file="output.pcap";
-	char * system_command_1= strcat(command,strcat(location,output_file));
-	system(system_command_1);
+	system(strcat("text2pcap -l 127 ",strcat(argv[2],"output.pcap")));
 	system(strcat("rm -f ",argv[2]));
 	return(0);
 }
